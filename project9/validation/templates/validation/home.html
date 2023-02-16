@@ -1,0 +1,83 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="{% static 'validation/css/bootstrap.css' %}">
+    <style>
+        .success {
+            color: red;
+        }
+        
+        .info {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-10 ">
+        <div class="m-auto">
+
+            <h1 class="text center alert alert-danger">Welcome to World's best E-Cloud Storage Company</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+
+
+
+
+
+                {% if messages %} {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{message.tags}} {{message.tags}} alert-dismissible fade show" role="alert" {% endif %}>
+
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                </div>
+                {% endfor %} {% endif %}
+                <h1 class="text-center alert alert-success">Create Account here</h1>
+                <form class="form-control" action="" method="post">
+                    {% csrf_token %} {{form.as_p}}
+                    <input class="btn btn-primary btn-sm" type="submit" />
+                </form>
+            </div>
+
+            <div class="col-sm-8">
+                <h1 class="text-center alert alert-primary">Feeded data is below</h1>
+                <table class="table table-hover border-1">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in datas%}
+
+
+                        <tr>
+                            <th scope="row">{{data.id}}</th>
+                            <td>{{data.username}}</td>
+                            <td>{{data.password}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="{% static 'validation/js/popper.js' %}"></script>
+    <script src="{% static 'validation/js/bootstrap.js' %}"></script>
+    <script src="{% static 'validation/js/jquery.js'% }"></script>
+</body>
+
+</html>

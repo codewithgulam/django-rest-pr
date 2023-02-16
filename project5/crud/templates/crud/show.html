@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hello we are in show.html</h1>
+    <table border="2">
+        <tr>
+            <!-- <th>
+                multiple del
+            </th> -->
+            <th>Id</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Employee ID</th>
+            <th>Action</th>
+            <th>Operation</th>
+        </tr>
+        {% for employee in employee %}
+
+        <tr>
+            <!-- <td>
+                <input type="checkbox" name="" id="">
+
+            </td> -->
+            <td>
+                {{employee.id}}
+            </td>
+            <td>
+                {{employee.name}}
+            </td>
+            <td>
+                {{employee.company}}
+            </td>
+            <td>
+                {{employee.employee_id}}
+            </td>
+            <td>
+                <a href="delete/{{employee.id}}">Delete</a>
+            </td>
+            <td>
+                <a href="update/{{employee.id}}">Update</a>
+            </td>
+
+        </tr>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="/register"> Add data</a>
+            </td>
+    </table>
+</body>
+
+</html>
